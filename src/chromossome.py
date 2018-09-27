@@ -53,11 +53,21 @@ class Chromossome:
         else:
             return ' '
 
+    def get_chromossome_size(self):
+        """
+        Calculate the size of a chromossome recursively.
+
+        Returns:
+            [int] -- the size of the chromossome.
+        """
+        return self.__left_child.get_chromossome_size() + \
+                self.__right_child.get_chromossome_size() + 1 if self is None else 0
+
     @classmethod
     def gen_random_chromossome(cls, depth, method):
 
-        print('----> Recursion')
-        print('Max Depth: ' + str(depth))
+        #print('----> Recursion')
+        #print('Max Depth: ' + str(depth))
 
         utils = Utils()
         arg1 = None
@@ -66,16 +76,16 @@ class Chromossome:
         # Provide equal probability of choosing a terminal and an operator
         choosing_terminal = utils.get_random_probability() <= 0.5
 
-        if depth == 0 or (method == 'grow' and choosing_terminal and depth <= utils.MIN_DEPTH):
+        if depth == 0 or (method == 'grow' and choosing_terminal):
             expr = utils.get_terminal()
-            print('[+] Terminal: ' + str(expr))
+            #print('[+] Terminal: ' + str(expr))
         else:        
             expr = utils.get_function()
             arg1 = cls.gen_random_chromossome(depth - 1, method)
             if utils.is_operator_binary(expr):
                 arg2 = cls.gen_random_chromossome(depth - 1, method)
 
-        print('[+] Expression: ' + str(arg1) + ' ' + str(expr) + ' ' + str(arg2))
+        #print('[+] Expression: ' + str(arg1) + ' ' + str(expr) + ' ' + str(arg2))
 
         return Chromossome(expr, arg1, arg2)
 

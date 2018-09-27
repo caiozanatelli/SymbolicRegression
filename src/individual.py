@@ -1,5 +1,7 @@
 from utils import Utils
+import numpy as np
 import math
+import sys
 
 class Individual:
 
@@ -7,7 +9,10 @@ class Individual:
         self.__genotype = root_chromo
         self.__fitness  = None
 
-    def calculate_fitness(self, dataset_input=None, avg_dataset_output=None):
+        if not root_chromo is None:
+            self.__size = root_chromo.get_chromossome_size()
+
+    def calculate_fitness(self, dataset_input, avg_dataset_output=None):
         """ 
         Fitness calculation via Normalized Root Mean Square Error (NRMSE)
 
@@ -19,33 +24,22 @@ class Individual:
             A list of floating points indicating the individual fitness for each
             input.
         """
-        #dataset_input = [[-1.235928614240245,-1.3641055948703154,6.515718683072601]]
-        dataset_input = [[2.0,5.0,10.0]]
-        rows = len(dataset_input)
-
-        avg_dataset_output = 0
-        for i in range(rows):
-            avg_dataset_output += dataset_input[i][-1]
-
-        avg_dataset_output /= rows
-
-        self.__fitness = []
-        sum_diff = 0
-        norm_factor = 0
-        index = 0
-
+        self.__fitness = 0.0
+        sum_diff       = 0.0
+        norm_factor    = 0.0
         for row in dataset_input:
-            res_eval = self.eval(self.__genotype, row)
-            sum_diff += (row[-1] - res_eval) ** 2
+            #print('----> ROW: ' + str(row))
+            try:
+                res_eval = self.eval(self.__genotype, row)
+                sum_diff += (row[-1] - res_eval) ** 2
+            except Exception:
+                sum_diff = sys.maxint
+        
             norm_factor += (row[-1] - avg_dataset_output) ** 2
-            if norm_factor == 0:
-                norm_factor = 1
-            index += 1
 
-            self.__fitness.append(math.sqrt((sum_diff / norm_factor)))
-
+        self.__fitness = math.sqrt((sum_diff / norm_factor))
+        print('[+] Fitness: ' + str(self.__fitness))
         return self.__fitness
-
 
     def eval(self, curr_chromo, xarray):
         """
@@ -72,6 +66,7 @@ class Individual:
             elif str_chromo == Utils.MUL_OP_SYMBOL:
                 return self.eval(left, xarray) * self.eval(right, xarray)
             elif str_chromo == Utils.DIV_OP_SYMBOL:
+                # Safe division: return 1 if the denominator is 0
                 numerator   = self.eval(left, xarray)
                 denominator = self.eval(right, xarray)
                 return numerator / denominator if denominator != 0 else 0
@@ -79,17 +74,19 @@ class Individual:
                 return math.sin(self.eval(left, xarray))
             elif str_chromo == Utils.COS_OP_SYMBOL:
                 return math.cos(self.eval(left, xarray))
-
         # The current node is a variable
         elif utils.is_variable(str_chromo):
-            index = int(str(chromo)[1:])
-            return xarray[index]
+            index = int(str_chromo[1:])
+            #print('--------> VARIABLE: X' + str(index) + '       VALUE: ' + str(xarray[index]))
+            return xarray[index] if index < len(xarray) - 1 else 0
         # The current node is a constant
         else:
-            return utils.get_constant() # TODO: CHECK THIS LATER!
-
+            return float(str_chromo) # TODO: CHECK THIS LATER!
 
     def mutate(self):
+        """
+        Perform the mutation genetic operator to a chromossome.
+        """
         pass
 
     def crossover(self):

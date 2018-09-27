@@ -1,8 +1,5 @@
 import random
 
-class GeneticOperators:
-    pass
-
 class Singleton(type):
 
     _instance = None
@@ -15,10 +12,6 @@ class Singleton(type):
 class Utils(object):
     __metaclass__ = Singleton
 
-    __binary_ops  = None
-    __unary_ops   = None
-    __variables   = None
-
     ADD_OP_SYMBOL = '+'
     SUB_OP_SYMBOL = '-'
     DIV_OP_SYMBOL = '/'
@@ -26,20 +19,27 @@ class Utils(object):
     COS_OP_SYMBOL = 'cos'
     SIN_OP_SYMBOL = 'sin'
 
-    MIN_DEPTH     = 3
+    __binary_ops  = None
+    __unary_ops   = None
+    __variables   = None
 
     def __init__(self):
+        print('Initing Utils...')
+        #random.seed(1)
         self.__init_operands()
 
     def __init_operands(self):
         self.__binary_ops = ['+', '-', '*', '/']
+        #self.__unary_ops  = []
         self.__unary_ops  = ['sin', 'cos']
-        self.set_variables(3)
+        self.set_variables(10)
 
     def set_variables(self, nvariables):
         self.__variables  = []
         for i in xrange(nvariables):
             self.__variables.append('X' + str(i))
+
+        print(str(self.__variables))
 
     def get_variables(self):
         return self.__variables
@@ -60,16 +60,17 @@ class Utils(object):
         return x in self.__variables
 
     def is_constant(self, x):
-        return x not in (self.__binary_ops + self.__unary_ops) and float(x) <= 1
+        return not self.is_operator(x) and not self.is_variable(x)
 
     def is_terminal(self, x):
         return self.is_variable(x) or self.is_constant(x)
 
     def get_terminal(self):
-        choosing_constant = self.get_random_probability()
+        choosing_constant = self.get_random_probability() < 0.5
         if choosing_constant:
             return self.get_constant()
-        return self.__variables[random.randint(0, len(self.__variables) - 1)]
+        return 'X' + str(random.randint(0, len(self.__variables) - 1))
+        #return self.__variables[random.randint(0, len(self.__variables) - 1)]
 
     def get_function(self):
         len_binary = len(self.__binary_ops)
@@ -89,10 +90,5 @@ class Utils(object):
 
 if __name__ == '__main__':
     utils1 = Utils()
-    print(utils1.get_operands())
-
     utils2 = Utils()
-    print(utils2.get_operands())
-
     utils3 = Utils()
-    print(utils3.get_operands())

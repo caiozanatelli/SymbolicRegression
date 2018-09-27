@@ -1,11 +1,21 @@
+from ioutils import IOUtils
 import argparse
 
 def main(args):
     print('. : Symbolic Regression Solver : .')
 
+    training_dataset = IOUtils().read_csv(args.train)
+    testing_dataset  = IOUtils().read_csv(args.test)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='A Genetic Programming approach \
                                     for Symbolic Regression')
+    parser.add_argument('--train', action='store', type=str, required=True,
+                        help='Training dataset path')
+    parser.add_argument('--test', action='store', type=str, required=True,
+                        help='Testing dataset path')
+    parser.add_argument('--out', action='store', type=str, required=True,
+                        help='Output file path')
     parser.add_argument('--pop-size', action='store', type=int, default=30,
                         help='Set the population size')
     parser.add_argument('--cross-prob', action='store', type=float, default=0.8,
@@ -22,9 +32,5 @@ if __name__ == '__main__':
                         help='Set the tournament size')
     parser.add_argument('--elitism', action='store', default=True,
                         help='Choose whether the algorithm must use elitism or not')
-    parser.add_argument('--train', action='store', type=str, required=True,
-                        help='Training dataset path')
-    parser.add_argument('--out', action='store', type=str, required=True,
-                        help='Output file path')
     args = parser.parse_args()
     main(args)
