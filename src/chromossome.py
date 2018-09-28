@@ -15,9 +15,7 @@ class Chromossome:
         self.__symbol = symbol
 
     def __str__(self):
-        if self is not None:
-            return str(self.__symbol)
-        return ' '
+        return str(self.__symbol) if self is not None else ' '
 
     def get_left_child(self):
         return self.__left_child
@@ -37,22 +35,6 @@ class Chromossome:
     def set_symbol(self, symbol):
         self.__symbol = symbol
 
-    def chromossome_tree_str(self):
-        if self is not None:
-            left_side_str  = str(self.__left_child.chromossome_tree_str()) \
-                            if self.__left_child is not None else ''
-            right_side_str = str(self.__right_child.chromossome_tree_str()) \
-                            if self.__right_child is not None else ''
-
-            utils = Utils()
-            if utils.is_operator_binary(str(self)) or utils.is_terminal(str(self)):
-                return '(' + left_side_str + ' ' +  str(self) + ' ' + right_side_str + ')'
-            else:
-                return '( ' + str(self) + ' ' + left_side_str + ' )'
-            #return '( ' + str(self) + ' ' + left_side_str + ' ' + right_side_str + ' )'
-        else:
-            return ' '
-
     def get_chromossome_size(self):
         """
         Calculate the size of a chromossome recursively.
@@ -63,6 +45,26 @@ class Chromossome:
         return self.__left_child.get_chromossome_size() + \
                 self.__right_child.get_chromossome_size() + 1 if self is None else 0
 
+    def search(self, index):
+        pass
+
+    def chromossome_tree_str(self):
+        if self is not None:
+            left_side_str  = str(self.__left_child.chromossome_tree_str()) \
+                            if self.__left_child is not None else ''
+            right_side_str = str(self.__right_child.chromossome_tree_str()) \
+                            if self.__right_child is not None else ''
+            utils = Utils()
+            if utils.is_operator_binary(str(self)) or utils.is_terminal(str(self)):
+                return '(' + left_side_str + ' ' +  str(self) + ' ' + right_side_str + ')'
+            else:
+                return '( ' + str(self) + ' ' + left_side_str + ' )'
+        else:
+            return ' '
+
+    def replace_chromossome(self, chromo, new_subtree):
+        pass
+        
     @classmethod
     def gen_random_chromossome(cls, depth, method):
 

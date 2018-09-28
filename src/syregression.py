@@ -1,4 +1,5 @@
 from ioutils import IOUtils
+from genprog import GeneticProgramming
 import argparse
 
 def main(args):
@@ -6,6 +7,9 @@ def main(args):
 
     training_dataset = IOUtils().read_csv(args.train)
     testing_dataset  = IOUtils().read_csv(args.test)
+
+    gp = GeneticProgramming(args)
+    gp.train(training_dataset)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='A Genetic Programming approach \
@@ -26,7 +30,9 @@ if __name__ == '__main__':
                         help='Set the maximum depth of the tree')
     parser.add_argument('--seed', action='store', type=int, default=1,
                         help='Set the seed for generating random numbers')
-    parser.add_argument('--max-gen', action='store', type=int, default=30,
+    parser.add_argument('--nvariables', action='store', type=int, default=2,
+                        help='Set number of variables to generate the function')
+    parser.add_argument('--ngen', action='store', type=int, default=30,
                         help='Set the number of generations that must be run')
     parser.add_argument('--tour-size', action='store', type=int, default=2,
                         help='Set the tournament size')

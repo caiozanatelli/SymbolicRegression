@@ -1,18 +1,41 @@
+from chromossome import Chromossome
+from individual import Individual
+from population import Population
+from utils import Utils
 import numpy as np
 import random
 
 class GeneticProgramming:
-    __args = None
+    __population = None
+    __fitness    = float('inf')
 
     def __init__(self, args):
-        self.__args = args
+        self.__max_depth    = args.max_depth
+        self.__pop_size     = args.pop_size
+        self.__cross_prob   = args.cross_prob
+        self.__mut_prob     = args.mut_prob
+        self.__seed         = args.seed
+        self.__tour_size    = args.tour_size
+        self.__ngenerations = args.ngen
+        self.__enbl_elitism = args.elitism
+        self.__nvariables   = args.nvariables
+
+        Utils(args.seed, args.nvariables)
 
     def train(self, dataset):
-        max_depth  = self.__args.max_depth
-        pop_size   = self.__args.pop_size
-        cross_prob = self.__args.cross_prob
-        mut_prob   = self.__args.mut_prob
-        seed       = self.__args.seed
+        self.__population = Population(self.__pop_size, self.__max_depth)
+        avg_fitness, best, worst = self.__population.calculate_fitness(dataset)
+
+        print('\n')
+        print('[+] Average Fitness: ' + str(avg_fitness))
+        print('[+] Best Fitness:    ' + str(best.get_fitness()))
+        print('[+] Worst Fitness:   ' + str(worst.get_fitness()))
+        print('')
+
+        print('[+] Best individual:  ' + str(best.function_str()))
+        print('\n')
+        print('[+] Worst individual: ' + str(worst.function_str()))
+        print('')
 
     def test(self, dataset):
         pass
@@ -42,3 +65,4 @@ class GeneticProgramming:
                 best_elem_index   = i
 
         return best_elem_index
+

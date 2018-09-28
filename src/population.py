@@ -7,13 +7,13 @@ class Population:
     __max_depth   = None
 
     def __init__(self, population_size, max_depth):
-        self.__best_fitness = 0.0
-        self.__avg_fitness  = 0.0
-        self.__nrepeated_individuals = 0
+        self.__max_depth        = max_depth
+        self.__best_individual  = None
+        self.__worst_individual = None
+        self.__avg_fitness      = 0.0
+        self.__nrepeated_individuals   = 0
         self.__ncross_best_individuals = 0
         self.__population_size = population_size
-        self.__max_depth = max_depth
-
         # Generate an initial population
         self.initialize_population()
 
@@ -49,36 +49,50 @@ class Population:
         """
         self.__individuals = []
         half_size = self.__population_size / 2
-
         for i in range(half_size):
             max_depth = self.__max_depth % (i + 1)
-            self.__individuals.append(Individual(Chromossome.gen_random_chromossome(max_depth, 'full')))
-            self.__individuals.append(Individual(Chromossome.gen_random_chromossome(max_depth, 'grow')))
-
+            self.__individuals.append(Individual(self.__max_depth, 
+                                        Chromossome.gen_random_chromossome(max_depth, 'full')))
+            self.__individuals.append(Individual(self.__max_depth, 
+                                        Chromossome.gen_random_chromossome(max_depth, 'grow')))
         return self.__individuals
 
-    def calculate_population_fitness(self, xarray):
+    def calculate_fitness(self, xarray):
+        pop_size = len(self.__individuals)
         rows = len(xarray)
-        avg_dataset_output = 0.0
-        
-        for i in range(rows):
-            avg_dataset_output += xarray[i][-1]
-        avg_dataset_output /= rows
-        print('[+] AVG: ' + str(avg_dataset_output))
+        avg_dataset_output = sum(xarray[i][-1] for i in range(rows)) / rows
 
-        #for indiv in self.__individuals:
-        #    indiv.calculate_fitness(xarray, avg_dataset_output)
+        self.__avg_fitness = 0.0
+        worst_fitness = 0.0
+        best_fitness  = float('inf')
 
-        processes = [Process(target=indiv.calculate_fitness, args=(xarray, avg_dataset_output,)) 
-                    for indiv in self.__individuals]
+        for indiv in self.__individuals:
+            indiv_fitness = indiv.calculate_fitness(xarray, avg_dataset_output)
+            self.__avg_fitness += indiv_fitness
+                        
+            if indiv_fitness < best_fitness:
+                self.__best_individual  = indiv
+                best_fitness = indiv_fitness
+
+            if indiv_fitness > worst_fitness:
+                self.__worst_individual = indiv
+                worst_fitness = indiv_fitness
+
+        self.__avg_fitness /= pop_size
+
+        #processes = [Process(target=self.__individuals[i].calculate_fitness, args=(xarray, avg_dataset_output,)) 
+        #            for i in range(len(self.__individuals))]
 
         # Run all the processes
-        for p in processes:
-            p.start()
+        #for p in processes:
+        #    p.start()
         # Wait all the processes to finish
-        for p in processes:
-            p.join()
+        #for p in processes:
+        #    p.join()
 
-        return (self.__best_fitness, self.__avg_fitness, 
-                self.__nrepeated_individuals, self.__ncross_best_individuals)
+        #sum_fitness = sum(indiv.get_fitness() for indiv in self.__individuals) / len(self.__individuals)
+        #for i in self.__individuals:
+        #    print(i.get_fitness())
+
+        return (self.__avg_fitness, self.__best_individual, self.__worst_individual)
         

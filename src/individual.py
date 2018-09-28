@@ -1,13 +1,15 @@
 from utils import Utils
+from copy import deepcopy
 import numpy as np
 import math
 import sys
 
 class Individual:
 
-    def __init__(self, root_chromo=None):
-        self.__genotype = root_chromo
-        self.__fitness  = None
+    def __init__(self, max_depth, root_chromo=None):
+        self.__genotype  = root_chromo
+        self.__max_depth = max_depth
+        self.__fitness   = float('inf')
 
         if not root_chromo is None:
             self.__size = root_chromo.get_chromossome_size()
@@ -28,7 +30,6 @@ class Individual:
         sum_diff       = 0.0
         norm_factor    = 0.0
         for row in dataset_input:
-            #print('----> ROW: ' + str(row))
             try:
                 res_eval = self.eval(self.__genotype, row)
                 sum_diff += (row[-1] - res_eval) ** 2
@@ -70,6 +71,10 @@ class Individual:
                 numerator   = self.eval(left, xarray)
                 denominator = self.eval(right, xarray)
                 return numerator / denominator if denominator != 0 else 0
+            elif str_chromo == Utils.POW_OP_SYMBOL:
+                return math.pow(self.eval(left, xarray), self.eval(right, xarray))
+            elif str_chromo == Utils.SQRT_OP_SYMBOL:
+                return math.sqrt(self.eval(left, array))
             elif str_chromo == Utils.SIN_OP_SYMBOL:
                 return math.sin(self.eval(left, xarray))
             elif str_chromo == Utils.COS_OP_SYMBOL:
@@ -85,9 +90,37 @@ class Individual:
 
     def mutate(self):
         """
-        Perform the mutation genetic operator to a chromossome.
+        Perform the mutation genetic operator to a chromossome by replacing a node's subtree
+        by another one generated randomly.
+
+        Returs:
+            A Chromossome object representing the mutated node.
         """
-        pass
+        utils = Utils()
+        copy_chromo = copy.deepcopy()
+        tree_size   = self.__genotype.get_chromossome_size()
+        mut_index   = utils.get_randint(0, tree_size - 1)
+        mut_chromo  = copy_chromo.search(mut_index)
+
+        # Get a random new operator or terminal for the chromo being mutated
+        new_chromo_symbol = utils.get_random_node()
+        left  = None
+        right = None
+
+        # The chosen node is a variable 
+        if utils.is_variable(new_chromo_node):
+            mut_chromo.set_symbol(new_chromo_symbol)
+        # The chosen node is a function
+        else:
+            mut_chromo.set_symbol(new_chromo_symbol)
+            mut_max_depth = utils.get_randint(2, self.__max_depth / 2)
+            left  = Chromossome.gen_random_chromossome(mut_max_depth, 'full')
+            right = None if utils.is_operator_unary(new_chromo_symbol) \
+                    else Chromossome.gen_random_chromossome(mut_max_depth, 'full')
+        mut_chromo.set_left_child(left)
+        mut_chromo.set_right_child(right)
+
+        return mut_chromo
 
     def crossover(self):
         pass
@@ -97,3 +130,6 @@ class Individual:
 
     def get_genotype(self):
         return self.__genotype
+
+    def get_fitness(self):
+        return self.__fitness

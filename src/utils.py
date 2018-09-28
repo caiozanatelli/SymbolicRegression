@@ -12,33 +12,35 @@ class Singleton(type):
 class Utils(object):
     __metaclass__ = Singleton
 
-    ADD_OP_SYMBOL = '+'
-    SUB_OP_SYMBOL = '-'
-    DIV_OP_SYMBOL = '/'
-    MUL_OP_SYMBOL = '*'
-    COS_OP_SYMBOL = 'cos'
-    SIN_OP_SYMBOL = 'sin'
+    ADD_OP_SYMBOL  = '+'
+    SUB_OP_SYMBOL  = '-'
+    DIV_OP_SYMBOL  = '/'
+    MUL_OP_SYMBOL  = '*'
+    POW_OP_SYMBOL  = 'pow'
+    SQRT_OP_SYMBOL = 'sqrt'
+    COS_OP_SYMBOL  = 'cos'
+    SIN_OP_SYMBOL  = 'sin'
 
     __binary_ops  = None
     __unary_ops   = None
     __variables   = None
 
-    def __init__(self):
-        print('Initing Utils...')
-        #random.seed(1)
-        self.__init_operands()
+    def __init__(self, seed=None, nvariables=None):
+        self.__init_operators()
+        if seed is not None:
+            random.seed(seed)
+        if nvariables is not None:
+            self.set_variables(nvariables)
 
-    def __init_operands(self):
+    def __init_operators(self):
         self.__binary_ops = ['+', '-', '*', '/']
         #self.__unary_ops  = []
         self.__unary_ops  = ['sin', 'cos']
-        self.set_variables(10)
 
     def set_variables(self, nvariables):
         self.__variables  = []
         for i in xrange(nvariables):
             self.__variables.append('X' + str(i))
-
         print(str(self.__variables))
 
     def get_variables(self):
@@ -46,6 +48,9 @@ class Utils(object):
 
     def get_operators(self):
         return self.__binary_ops + self.__unary_ops
+
+    def get_random_node(self):
+        return random.choice(self.__variables + self.__binary_ops + self.__unary_ops)
 
     def is_operator(self, x):
         return x in self.__binary_ops + self.__unary_ops
@@ -70,7 +75,6 @@ class Utils(object):
         if choosing_constant:
             return self.get_constant()
         return 'X' + str(random.randint(0, len(self.__variables) - 1))
-        #return self.__variables[random.randint(0, len(self.__variables) - 1)]
 
     def get_function(self):
         len_binary = len(self.__binary_ops)
@@ -87,6 +91,9 @@ class Utils(object):
 
     def get_random_probability(self):
         return random.random()
+
+    def get_randint(self, start, end):
+        return random.randint(start, end)
 
 if __name__ == '__main__':
     utils1 = Utils()

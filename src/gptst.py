@@ -13,6 +13,10 @@ if __name__ == '__main__':
     #print(individual.function_str())
 
     #print('\n\nFitness: ' + str(individual.calculate_fitness(dataset_input)))
+    SEED = 1
+    NVARIABLES = 2
+
+    Utils(SEED, NVARIABLES)
 
     population = Population(30, 7)
     individuals = population.get_individuals()
