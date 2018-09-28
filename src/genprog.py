@@ -1,7 +1,9 @@
 from chromossome import Chromossome
 from individual import Individual
 from population import Population
+from statistics import Statistics
 from utils import Utils
+import collections
 import numpy as np
 import random
 
@@ -21,21 +23,22 @@ class GeneticProgramming:
         self.__nvariables   = args.nvariables
 
         Utils(args.seed, args.nvariables)
+        self.__stats = Statistics()
 
     def train(self, dataset):
         self.__population = Population(self.__pop_size, self.__max_depth)
-        avg_fitness, best, worst = self.__population.calculate_fitness(dataset)
+        stats = self.__population.calculate_fitness(dataset)
+        fitness = stats.get_avg_fitness()
+        best = stats.get_best_individual()
+        worst = stats.get_worst_individual()
 
-        print('\n')
-        print('[+] Average Fitness: ' + str(avg_fitness))
-        print('[+] Best Fitness:    ' + str(best.get_fitness()))
-        print('[+] Worst Fitness:   ' + str(worst.get_fitness()))
-        print('')
+        stats.print_statistics()
 
-        print('[+] Best individual:  ' + str(best.function_str()))
-        print('\n')
-        print('[+] Worst individual: ' + str(worst.function_str()))
-        print('')
+        for generation in range(self.__ngenerations):
+            # Calculate the number of repeated individuals in the population
+            unique_chromos = list(collections.Counter(indiv.function_str() 
+                                for indiv in self.__population.get_individuals()))
+            stats.set_nrepeated_individuals(self.__pop_size - len(unique_chromos))
 
     def test(self, dataset):
         pass

@@ -33,3 +33,14 @@ class IOUtils(object):
         except Exception as e:
             print(e)
             sys.exit(1)
+
+    def write_output(self, file_dir, stats):
+        try:
+            with open(file_dir, 'a') as output:
+                output.write(stats)
+        except IOError as e:
+            print(e)
+            sys.exit(1)
+        except Exception as e:
+            print(e)
+            sys.exit(1)
