@@ -1,0 +1,8 @@
+[+] Generation:      1
+[+] Average Fitness: 131.522099378
+[+] Best Fitness:    1.03338222071
+[+] Worst Fitness:   16125.731201
+[+] Number of repeated invididuals: 64
+[+] Number of crossover-generated individuals that are better then their parents: 0
+[+] NUmber of crossover-generated individuals that are worse than their parents: 0
+----------------------------------

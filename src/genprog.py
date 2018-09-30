@@ -45,7 +45,7 @@ class GeneticProgramming:
         self.__population.calculate_fitness(dataset, avg_dataset_output)
 
         for generation in range(1, self.__ngenerations + 1):
-            #print('[+] Generation: ' + str(generation) + '/' + str(self.__ngenerations))
+            print('[+] Generation: ' + str(generation) + '/' + str(self.__ngenerations))
 
             #self.__population.calculate_fitness(dataset, avg_dataset_output)
 
@@ -66,8 +66,8 @@ class GeneticProgramming:
             stats.set_nrepeated_individuals(self.__pop_size - len(unique_chromos))
 
             # Write the current population's statistics to the output file
-            #ioutils.write_output(stats.statistics_str())
-            #ioutils.write_log(stats.get_stats_csv_fmt())
+            ioutils.write_output(stats.statistics_str())
+            ioutils.write_log(stats.get_stats_csv_fmt())
             print(stats.get_stats_csv_fmt())
             stats.clear()
 
