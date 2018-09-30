@@ -10,6 +10,7 @@ def main(args):
 
     gp = GeneticProgramming(args)
     gp.train(training_dataset)
+    gp.test(testing_dataset)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='A Genetic Programming approach \
@@ -22,7 +23,7 @@ if __name__ == '__main__':
                         help='Output file path')
     parser.add_argument('--pop-size', action='store', type=int, default=30,
                         help='Set the population size')
-    parser.add_argument('--cross-prob', action='store', type=float, default=0.8,
+    parser.add_argument('--cross-prob', action='store', type=float, default=0.9,
                         help='Set the crossing-over probability')
     parser.add_argument('--mut-prob', action='store', type=float, default=0.05,
                         help='Set the mutation probability')

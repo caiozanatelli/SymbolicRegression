@@ -2,19 +2,30 @@ from chromossome import Chromossome
 from individual import Individual
 from statistics import Statistics
 from multiprocessing import Process
+import copy
 
 class Population:
     __individuals = None
     __max_depth   = None
 
-    def __init__(self, population_size, max_depth):
+    def __init__(self, population_size=None, max_depth=None):
         # Generate an initial population
-        self.__max_depth        = max_depth
+        self.__max_depth       = max_depth
         self.__population_size = population_size
-        self.initialize_population()
+
+        if population_size is not None and max_depth is not None:
+            self.initialize_population()
+        else:
+            self.__individuals = []
         
-        # Statistics records for a single population        
-        self.__stats = Statistics()
+    def set_max_depth(self, max_depth):
+        self.__max_depth = max_depth
+
+    def add_individual(self, individual):
+        self.__individuals.append(individual)
+
+    def get_size(self):
+        return len(self.__individuals)
 
     def initialize_population(self):
         """
@@ -26,17 +37,14 @@ class Population:
         """
         return self.__gen_ramped_half_half()
 
-    def get_statistics(self):
-        return self.__stats
-
     def get_individuals(self):
         return self.__individuals
 
     def get_individual_at(self, index):
         return self.__individuals[index] if index >= 0 and index < len(self.__individuals) else None
 
-    def get_population_size(self):
-        return self.__population_size
+    #def get_population_size(self):
+    #    return self.__population_size
 
     def __gen_ramped_half_half(self):
         """ 
@@ -59,10 +67,37 @@ class Population:
                                         Chromossome.gen_random_chromossome(max_depth, 'grow')))
         return self.__individuals
 
-    def calculate_fitness(self, xarray):
+    def get_stats(self):
+        avg_fitness   = 0.0
+        best_fitness  = float('inf')
+        worst_fitness = 0.0
+        best_individual  = None
+        worst_individual = None
+
+        pop_size = len(self.__individuals)
+
+        for indiv in self.__individuals:
+            indiv_fitness = indiv.get_fitness()
+            #indiv_fitness = 1
+            avg_fitness  += indiv_fitness
+
+            if indiv_fitness < best_fitness:
+                best_individual = indiv
+                best_fitness = indiv_fitness
+            if indiv_fitness > worst_fitness:
+                worst_individual = indiv
+                worst_fitness = indiv_fitness
+        avg_fitness /= pop_size
+
+        return (best_individual, worst_individual, avg_fitness)
+
+
+    def calculate_fitness(self, xarray, avg_dataset_output=None):
         pop_size = len(self.__individuals)
         rows = len(xarray)
-        avg_dataset_output = sum(xarray[i][-1] for i in range(rows)) / rows
+
+        if avg_dataset_output is None:
+            avg_dataset_output = sum(xarray[i][-1] for i in range(rows)) / rows
 
         avg_fitness   = 0.0
         worst_fitness = 0.0
@@ -82,11 +117,13 @@ class Population:
                 worst_fitness = indiv_fitness
         avg_fitness /= pop_size
 
-        self.__stats.set_best_individual(best_individual)
-        self.__stats.set_worst_individual(worst_individual)
-        self.__stats.set_avg_fitness(avg_fitness)
+        #self.__stats.set_best_individual(copy.deepcopy(best_individual))
+        #self.__stats.set_worst_individual(copy.deepcopy(worst_individual))
+        #self.__stats.set_avg_fitness(avg_fitness)
 
-        return self.__stats
+        #return self.__stats
+
+        return (copy.deepcopy(best_individual), copy.deepcopy(worst_individual), avg_fitness)
 
         #processes = [Process(target=self.__individuals[i].calculate_fitness, args=(xarray, avg_dataset_output,)) 
         #            for i in range(len(self.__individuals))]

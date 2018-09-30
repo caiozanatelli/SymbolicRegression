@@ -42,11 +42,53 @@ class Chromossome:
         Returns:
             [int] -- the size of the chromossome.
         """
-        return self.__left_child.get_chromossome_size() + \
-                self.__right_child.get_chromossome_size() + 1 if self is None else 0
+        if self is None:
+            return 0
+        else:
+            left_size  = self.__left_child.get_chromossome_size() \
+                        if self.__left_child  is not None else 0
+            right_size = self.__right_child.get_chromossome_size() \
+                        if self.__right_child is not None else 0
+            return left_size + right_size + 1
 
     def search(self, index):
-        pass
+        curr  = self
+        stack = []
+        count = 0
+        node_found = False
+
+        while not node_found:
+            if curr is not None:
+                stack.append(curr)
+                curr = curr.get_left_child()
+            else:
+                if len(stack) > 0:
+                    curr = stack.pop()
+                    if count == index:
+                        node_found = True
+                        return curr
+                    curr = curr.get_right_child()
+                    count += 1
+                else:
+                    node_found = True
+
+    def replace_chromossome(self, chromo, new_subtree):
+        if self is None:
+            return
+
+        if self.__left_child == chromo:
+            chromo.__left = new_subtree
+            return
+        else:
+            if self.__left_child is not None:
+                self.__left_child.replace_chromossome(chromo, new_subtree)
+        if self.__right_child == chromo:
+            self.__right_child = new_subtree
+            return
+        else:
+            if self.__right_child is not None:
+                self.__right_child.replace_chromossome(chromo, new_subtree)
+        return
 
     def chromossome_tree_str(self):
         if self is not None:
@@ -62,8 +104,18 @@ class Chromossome:
         else:
             return ' '
 
-    def replace_chromossome(self, chromo, new_subtree):
-        pass
+    def resize_tree(self, depth):
+        if depth > 0:
+            if self.__left_child is not None:
+                self.__left_child.resize_tree(depth - 1)
+            if self.__right_child is not None:
+                self.__right_child.resize_tree(depth - 1)
+        else:
+            if Utils().is_terminal(self.__symbol):
+                self.__left_child  = None
+                self.__right_child = None
+            else:
+                self = None
         
     @classmethod
     def gen_random_chromossome(cls, depth, method):

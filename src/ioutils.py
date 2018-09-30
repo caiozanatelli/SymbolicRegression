@@ -14,8 +14,25 @@ class Singleton(type):
 class IOUtils(object):
     __metaclass__ = Singleton
 
+    __output  = None
+    __out_log = None
+
     def __init__(self):
         pass
+
+    def __del__(self):
+        close(self.__output)
+
+    def open_output_file(self, file_dir):
+        try:
+            self.__output = open(file_dir, 'w')
+            self.__out_log = open(file_dir + '.csv', 'w')
+        except IOError as e:
+            print(e)
+            sys.exit(1)
+        except Exception as e:
+            print(e)
+            sys.exit(1)
 
     def read_csv(self, file_dir):
         try:
@@ -34,10 +51,19 @@ class IOUtils(object):
             print(e)
             sys.exit(1)
 
-    def write_output(self, file_dir, stats):
+    def write_output(self, stats):
         try:
-            with open(file_dir, 'a') as output:
-                output.write(stats)
+            self.__output.write(stats)
+        except IOError as e:
+            print(e)
+            sys.exit(1)
+        except Exception as e:
+            print(e)
+            sys.exit(1)
+
+    def write_log(self, log):
+        try:
+            self.__out_log.write(log)
         except IOError as e:
             print(e)
             sys.exit(1)

@@ -41,7 +41,7 @@ class Utils(object):
         self.__variables  = []
         for i in xrange(nvariables):
             self.__variables.append('X' + str(i))
-        print(str(self.__variables))
+        #print(str(self.__variables))
 
     def get_variables(self):
         return self.__variables

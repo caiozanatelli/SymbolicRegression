@@ -1,12 +1,16 @@
 class Statistics:
 
     def __init__(self, best=None, worst=None, avg_fitness=None):
+        self.clear()
+
+    def clear(self):
         self.__curr_generation  = 0
-        self.__best_individual  = best
-        self.__worst_individual = worst
-        self.__avg_fitness      = avg_fitness
-        self.__nrepeated_individuals   = 0
-        self.__ncross_best_individuals = 0
+        self.__best_individual  = None
+        self.__worst_individual = None
+        self.__avg_fitness      = 0.0
+        self.__nrepeated_individuals     = 0
+        self.__ncross_best_than_parents  = 0
+        self.__ncross_worst_than_parents = 0
 
     def set_current_generation(self, generation):
         self.__curr_generation = generation
@@ -38,15 +42,39 @@ class Statistics:
     def get_nrepeated_individuals(self):
         return self.__nrepeated_individuals
 
-    def set_ncross_best_individuals(self, number):
-        self.__ncross_best_individuals = number
+    def set_ncross_best_than_parents(self, number):
+        self.__ncross_best_than_parents = number
 
-    def get_ncross_best_individuals(self):
-        return self.__ncross_best_individuals
+    def get_ncross_best_than_parents(self):
+        return self.__ncross_best_than_parents
 
-    def print_statistics(self):
-        print('----------------------------------')
-        print('[+] Average Fitness: ' + str(self.__avg_fitness))
-        print('[+] Best Fitness:    ' + str(self.__best_individual.get_fitness()))
-        print('[+] Worst Fitness:   ' + str(self.__worst_individual.get_fitness()))
-        print('----------------------------------')
+    def incr_ncross_best_than_parents(self):
+        self.__ncross_best_than_parents += 1
+
+    def incr_ncross_worst_than_parents(self):
+        self.__ncross_worst_than_parents += 1
+
+    def set_ncross_worst_than_parents(self, number):
+        self.__ncross_worst_than_parents = number
+
+    def get_ncross_worst_than_parents(self):
+        return self.__ncross_worst_than_parents
+
+    def statistics_str(self):
+        return  '[+] Generation:      ' + str(self.__curr_generation) + '\n' \
+                + '[+] Average Fitness: ' + str(self.__avg_fitness) + '\n' \
+                + '[+] Best Fitness:    ' + str(self.__best_individual.get_fitness())  + '\n' \
+                + '[+] Worst Fitness:   ' + str(self.__worst_individual.get_fitness()) + '\n' \
+                + '[+] Number of repeated invididuals: ' + str(self.__nrepeated_individuals) + '\n' \
+                + '[+] Number of crossover-generated individuals that are better then their parents: ' \
+                    + str(self.__ncross_best_than_parents) + '\n' \
+                + '[+] NUmber of crossover-generated individuals that are worse than their parents: ' \
+                    + str(self.__ncross_worst_than_parents) + '\n' \
+                + '----------------------------------\n'
+
+    def get_stats_csv_fmt(self):
+        return  str(self.__curr_generation) + ',' + str(self.__avg_fitness) + ',' \
+                + str(self.__best_individual.get_fitness()) + ',' + str(self.__worst_individual.get_fitness()) \
+                + ',' + str(self.__nrepeated_individuals) + ',' + str(self.__ncross_best_than_parents) + ',' \
+                + str(self.__ncross_worst_than_parents)
+
