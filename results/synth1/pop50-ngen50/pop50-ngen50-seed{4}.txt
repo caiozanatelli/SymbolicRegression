@@ -1,0 +1,400 @@
+[+] Generation:      1
+[+] Average Fitness: 20.6447875664
+[+] Best Fitness:    1.11403486045
+[+] Worst Fitness:   968.045825057
+[+] Number of repeated invididuals: 7
+[+] Number of crossover-generated individuals that are better then their parents: 0
+[+] NUmber of crossover-generated individuals that are worse than their parents: 0
+----------------------------------
+[+] Generation:      2
+[+] Average Fitness: 1.23137517613
+[+] Best Fitness:    1.10408379895
+[+] Worst Fitness:   2.85447740074
+[+] Number of repeated invididuals: 23
+[+] Number of crossover-generated individuals that are better then their parents: 26
+[+] NUmber of crossover-generated individuals that are worse than their parents: 22
+----------------------------------
+[+] Generation:      3
+[+] Average Fitness: 1.19298093953
+[+] Best Fitness:    1.10408379895
+[+] Worst Fitness:   1.46480926323
+[+] Number of repeated invididuals: 24
+[+] Number of crossover-generated individuals that are better then their parents: 23
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      4
+[+] Average Fitness: 1.17580987069
+[+] Best Fitness:    1.09238155813
+[+] Worst Fitness:   1.25484313299
+[+] Number of repeated invididuals: 25
+[+] Number of crossover-generated individuals that are better then their parents: 25
+[+] NUmber of crossover-generated individuals that are worse than their parents: 25
+----------------------------------
+[+] Generation:      5
+[+] Average Fitness: 1.19354472471
+[+] Best Fitness:    1.09238155813
+[+] Worst Fitness:   3.00315155665
+[+] Number of repeated invididuals: 26
+[+] Number of crossover-generated individuals that are better then their parents: 21
+[+] NUmber of crossover-generated individuals that are worse than their parents: 19
+----------------------------------
+[+] Generation:      6
+[+] Average Fitness: 1.16430639437
+[+] Best Fitness:    1.09238155813
+[+] Worst Fitness:   1.69090984831
+[+] Number of repeated invididuals: 24
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 19
+----------------------------------
+[+] Generation:      7
+[+] Average Fitness: 1.15146925469
+[+] Best Fitness:    1.0549853008
+[+] Worst Fitness:   1.71422508454
+[+] Number of repeated invididuals: 20
+[+] Number of crossover-generated individuals that are better then their parents: 25
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      8
+[+] Average Fitness: 1.3087756996
+[+] Best Fitness:    1.0549853008
+[+] Worst Fitness:   10.0893402101
+[+] Number of repeated invididuals: 16
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      9
+[+] Average Fitness: 1.35739046085
+[+] Best Fitness:    1.0549853008
+[+] Worst Fitness:   8.90322608126
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 19
+----------------------------------
+[+] Generation:      10
+[+] Average Fitness: 1.17945949879
+[+] Best Fitness:    1.0549853008
+[+] Worst Fitness:   2.96738113721
+[+] Number of repeated invididuals: 10
+[+] Number of crossover-generated individuals that are better then their parents: 28
+[+] NUmber of crossover-generated individuals that are worse than their parents: 20
+----------------------------------
+[+] Generation:      11
+[+] Average Fitness: 1.20923995865
+[+] Best Fitness:    1.0549853008
+[+] Worst Fitness:   4.54358193552
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 28
+[+] NUmber of crossover-generated individuals that are worse than their parents: 20
+----------------------------------
+[+] Generation:      12
+[+] Average Fitness: 1.27673456704
+[+] Best Fitness:    1.05154338414
+[+] Worst Fitness:   7.72768999941
+[+] Number of repeated invididuals: 15
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 19
+----------------------------------
+[+] Generation:      13
+[+] Average Fitness: 1.16497843764
+[+] Best Fitness:    1.05154338414
+[+] Worst Fitness:   3.23958632242
+[+] Number of repeated invididuals: 9
+[+] Number of crossover-generated individuals that are better then their parents: 32
+[+] NUmber of crossover-generated individuals that are worse than their parents: 13
+----------------------------------
+[+] Generation:      14
+[+] Average Fitness: 1.20526783808
+[+] Best Fitness:    1.03890258324
+[+] Worst Fitness:   3.18865929833
+[+] Number of repeated invididuals: 10
+[+] Number of crossover-generated individuals that are better then their parents: 33
+[+] NUmber of crossover-generated individuals that are worse than their parents: 13
+----------------------------------
+[+] Generation:      15
+[+] Average Fitness: 1.58703867493
+[+] Best Fitness:    1.01069714436
+[+] Worst Fitness:   16.2459520112
+[+] Number of repeated invididuals: 9
+[+] Number of crossover-generated individuals that are better then their parents: 32
+[+] NUmber of crossover-generated individuals that are worse than their parents: 14
+----------------------------------
+[+] Generation:      16
+[+] Average Fitness: 1.13600708285
+[+] Best Fitness:    1.00989672292
+[+] Worst Fitness:   3.19008559687
+[+] Number of repeated invididuals: 10
+[+] Number of crossover-generated individuals that are better then their parents: 27
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      17
+[+] Average Fitness: 1.1543506571
+[+] Best Fitness:    1.00210460029
+[+] Worst Fitness:   2.62896833037
+[+] Number of repeated invididuals: 5
+[+] Number of crossover-generated individuals that are better then their parents: 33
+[+] NUmber of crossover-generated individuals that are worse than their parents: 15
+----------------------------------
+[+] Generation:      18
+[+] Average Fitness: 1.23611636981
+[+] Best Fitness:    0.966892022125
+[+] Worst Fitness:   7.19835752495
+[+] Number of repeated invididuals: 13
+[+] Number of crossover-generated individuals that are better then their parents: 26
+[+] NUmber of crossover-generated individuals that are worse than their parents: 21
+----------------------------------
+[+] Generation:      19
+[+] Average Fitness: 1.15753881369
+[+] Best Fitness:    0.966892022125
+[+] Worst Fitness:   3.18374852175
+[+] Number of repeated invididuals: 13
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      20
+[+] Average Fitness: 1.11195717418
+[+] Best Fitness:    0.966892022125
+[+] Worst Fitness:   3.32837144507
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 16
+----------------------------------
+[+] Generation:      21
+[+] Average Fitness: 1.11690441052
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   2.3722146114
+[+] Number of repeated invididuals: 17
+[+] Number of crossover-generated individuals that are better then their parents: 26
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      22
+[+] Average Fitness: 1.14978406412
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   4.49470908669
+[+] Number of repeated invididuals: 14
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      23
+[+] Average Fitness: 1.04007974193
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   1.69487175332
+[+] Number of repeated invididuals: 15
+[+] Number of crossover-generated individuals that are better then their parents: 27
+[+] NUmber of crossover-generated individuals that are worse than their parents: 19
+----------------------------------
+[+] Generation:      24
+[+] Average Fitness: 1.07901359183
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   1.90511909837
+[+] Number of repeated invididuals: 14
+[+] Number of crossover-generated individuals that are better then their parents: 33
+[+] NUmber of crossover-generated individuals that are worse than their parents: 14
+----------------------------------
+[+] Generation:      25
+[+] Average Fitness: 1.44987021594
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   9.55703394682
+[+] Number of repeated invididuals: 13
+[+] Number of crossover-generated individuals that are better then their parents: 32
+[+] NUmber of crossover-generated individuals that are worse than their parents: 15
+----------------------------------
+[+] Generation:      26
+[+] Average Fitness: 1.16019153964
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   4.31898722763
+[+] Number of repeated invididuals: 14
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      27
+[+] Average Fitness: 1.20080114463
+[+] Best Fitness:    0.948835709082
+[+] Worst Fitness:   5.22481064196
+[+] Number of repeated invididuals: 14
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 16
+----------------------------------
+[+] Generation:      28
+[+] Average Fitness: 1.11501095499
+[+] Best Fitness:    0.752452287783
+[+] Worst Fitness:   2.68915646621
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 16
+----------------------------------
+[+] Generation:      29
+[+] Average Fitness: 1.76429002374
+[+] Best Fitness:    0.752452287783
+[+] Worst Fitness:   36.1982539033
+[+] Number of repeated invididuals: 11
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      30
+[+] Average Fitness: 1.06321061875
+[+] Best Fitness:    0.752452287783
+[+] Worst Fitness:   2.37522799442
+[+] Number of repeated invididuals: 13
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 19
+----------------------------------
+[+] Generation:      31
+[+] Average Fitness: 1.39499105535
+[+] Best Fitness:    0.752452287783
+[+] Worst Fitness:   15.0595779159
+[+] Number of repeated invididuals: 19
+[+] Number of crossover-generated individuals that are better then their parents: 32
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      32
+[+] Average Fitness: 0.998101796791
+[+] Best Fitness:    0.752452287783
+[+] Worst Fitness:   2.629221718
+[+] Number of repeated invididuals: 15
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 20
+----------------------------------
+[+] Generation:      33
+[+] Average Fitness: 1.17857374379
+[+] Best Fitness:    0.748469738659
+[+] Worst Fitness:   5.59855056951
+[+] Number of repeated invididuals: 11
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      34
+[+] Average Fitness: 1.20616265659
+[+] Best Fitness:    0.747247397191
+[+] Worst Fitness:   12.821246841
+[+] Number of repeated invididuals: 10
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 20
+----------------------------------
+[+] Generation:      35
+[+] Average Fitness: 1.06851729775
+[+] Best Fitness:    0.740589775462
+[+] Worst Fitness:   5.29831970695
+[+] Number of repeated invididuals: 11
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      36
+[+] Average Fitness: 1.0587721036
+[+] Best Fitness:    0.738896456311
+[+] Worst Fitness:   5.96412580381
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      37
+[+] Average Fitness: 0.90255233264
+[+] Best Fitness:    0.734444598279
+[+] Worst Fitness:   2.75792324318
+[+] Number of repeated invididuals: 15
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 14
+----------------------------------
+[+] Generation:      38
+[+] Average Fitness: 1.19328723757
+[+] Best Fitness:    0.734444598279
+[+] Worst Fitness:   7.37255912597
+[+] Number of repeated invididuals: 7
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
+[+] Generation:      39
+[+] Average Fitness: 0.888314873941
+[+] Best Fitness:    0.729148445031
+[+] Worst Fitness:   4.30196829101
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 16
+----------------------------------
+[+] Generation:      40
+[+] Average Fitness: 0.838978175233
+[+] Best Fitness:    0.715368140847
+[+] Worst Fitness:   3.11708440876
+[+] Number of repeated invididuals: 20
+[+] Number of crossover-generated individuals that are better then their parents: 23
+[+] NUmber of crossover-generated individuals that are worse than their parents: 15
+----------------------------------
+[+] Generation:      41
+[+] Average Fitness: 0.894997936067
+[+] Best Fitness:    0.602656822922
+[+] Worst Fitness:   3.10525614856
+[+] Number of repeated invididuals: 13
+[+] Number of crossover-generated individuals that are better then their parents: 30
+[+] NUmber of crossover-generated individuals that are worse than their parents: 15
+----------------------------------
+[+] Generation:      42
+[+] Average Fitness: 0.862106398093
+[+] Best Fitness:    0.602656822922
+[+] Worst Fitness:   3.11708440876
+[+] Number of repeated invididuals: 12
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 15
+----------------------------------
+[+] Generation:      43
+[+] Average Fitness: 0.817109900131
+[+] Best Fitness:    0.602656822922
+[+] Worst Fitness:   2.98864846361
+[+] Number of repeated invididuals: 14
+[+] Number of crossover-generated individuals that are better then their parents: 29
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      44
+[+] Average Fitness: 0.845725093116
+[+] Best Fitness:    0.602656822922
+[+] Worst Fitness:   1.92915795231
+[+] Number of repeated invididuals: 13
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 13
+----------------------------------
+[+] Generation:      45
+[+] Average Fitness: 0.819706173044
+[+] Best Fitness:    0.601324080258
+[+] Worst Fitness:   3.10919092786
+[+] Number of repeated invididuals: 15
+[+] Number of crossover-generated individuals that are better then their parents: 25
+[+] NUmber of crossover-generated individuals that are worse than their parents: 21
+----------------------------------
+[+] Generation:      46
+[+] Average Fitness: 2.30418923044
+[+] Best Fitness:    0.601324080258
+[+] Worst Fitness:   58.8039795711
+[+] Number of repeated invididuals: 18
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      47
+[+] Average Fitness: 0.84745249573
+[+] Best Fitness:    0.595198257341
+[+] Worst Fitness:   5.67356982995
+[+] Number of repeated invididuals: 21
+[+] Number of crossover-generated individuals that are better then their parents: 28
+[+] NUmber of crossover-generated individuals that are worse than their parents: 18
+----------------------------------
+[+] Generation:      48
+[+] Average Fitness: 0.769504888605
+[+] Best Fitness:    0.595198257341
+[+] Worst Fitness:   4.2810730549
+[+] Number of repeated invididuals: 20
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 15
+----------------------------------
+[+] Generation:      49
+[+] Average Fitness: 1.07117888572
+[+] Best Fitness:    0.595198257341
+[+] Worst Fitness:   16.1043556101
+[+] Number of repeated invididuals: 16
+[+] Number of crossover-generated individuals that are better then their parents: 32
+[+] NUmber of crossover-generated individuals that are worse than their parents: 12
+----------------------------------
+[+] Generation:      50
+[+] Average Fitness: 1.0945635784
+[+] Best Fitness:    0.595198257341
+[+] Worst Fitness:   17.6721277578
+[+] Number of repeated invididuals: 14
+[+] Number of crossover-generated individuals that are better then their parents: 31
+[+] NUmber of crossover-generated individuals that are worse than their parents: 17
+----------------------------------
