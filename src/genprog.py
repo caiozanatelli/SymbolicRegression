@@ -67,7 +67,7 @@ class GeneticProgramming:
 
             # Write the current population's statistics to the output file
             ioutils.write_output(stats.statistics_str())
-            ioutils.write_log(stats.get_stats_csv_fmt())
+            ioutils.write_log(stats.get_stats_csv_fmt() + '\n')
             print(stats.get_stats_csv_fmt())
             stats.clear()
 
@@ -133,6 +133,9 @@ class GeneticProgramming:
     def test(self, dataset):
         print('Minimum Error:      ' + str(self.__best_indiv.calculate_fitness(dataset)))
         print('Generated Function: ' + self.__best_indiv.function_str())
+        ioutils = IOUtils()
+        ioutils.write_log(str(self.__best_indiv.calculate_fitness(dataset)) + '\n')
+        ioutils.write_log(self.__best_indiv.function_str())
 
     def __tournament_selection(self):
         """
