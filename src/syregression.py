@@ -1,8 +1,10 @@
 from ioutils import IOUtils
 from genprog import GeneticProgramming
 import argparse
+import gc
 
 def main(args):
+    gc.enable()
     print('. : Symbolic Regression Solver : .')
 
     training_dataset = IOUtils().read_csv(args.train)

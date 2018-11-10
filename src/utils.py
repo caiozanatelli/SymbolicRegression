@@ -20,6 +20,7 @@ class Utils(object):
     SQRT_OP_SYMBOL = 'sqrt'
     COS_OP_SYMBOL  = 'cos'
     SIN_OP_SYMBOL  = 'sin'
+    LOG_OP_SYMBOL  = 'log'
 
     __binary_ops  = None
     __unary_ops   = None
@@ -35,13 +36,12 @@ class Utils(object):
     def __init_operators(self):
         self.__binary_ops = ['+', '-', '*', '/']
         #self.__unary_ops  = []
-        self.__unary_ops  = ['sin', 'cos']
+        self.__unary_ops  = ['log', 'sqrt', 'pow']
 
     def set_variables(self, nvariables):
         self.__variables  = []
         for i in xrange(nvariables):
             self.__variables.append('X' + str(i))
-        #print(str(self.__variables))
 
     def get_variables(self):
         return self.__variables
@@ -94,8 +94,3 @@ class Utils(object):
 
     def get_randint(self, start, end):
         return random.randint(start, end)
-
-if __name__ == '__main__':
-    utils1 = Utils()
-    utils2 = Utils()
-    utils3 = Utils()

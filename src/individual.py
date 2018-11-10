@@ -11,7 +11,7 @@ class Individual:
         self.__genotype  = root_chromo
         self.__max_depth = max_depth
         self.__fitness   = float('inf')
-        self.__max_chromo_size = (2 ** (max_depth + 1) -1)
+        self.__max_chromo_size = (2 ** (max_depth + 1)) -1
 
         if not root_chromo is None:
             self.__size = root_chromo.get_chromossome_size()
@@ -49,7 +49,7 @@ class Individual:
             self.__fitness = sys.maxint
         else:
             self.__fitness = math.sqrt((sum_diff / norm_factor))
-        #print('[+] Fitness: ' + str(self.__fitness))
+
         return self.__fitness
 
     def get_fitness(self):
@@ -85,9 +85,11 @@ class Individual:
                 denominator = self.eval(right, xarray)
                 return numerator / denominator if denominator != 0 else 0
             elif str_chromo == Utils.POW_OP_SYMBOL:
-                return math.pow(self.eval(left, xarray), self.eval(right, xarray))
+                return self.eval(left, xarray) ** 2
             elif str_chromo == Utils.SQRT_OP_SYMBOL:
                 return math.sqrt(self.eval(left, array))
+            elif str_chromo == Utils.LOG_OP_SYMBOL:
+                return math.log(self.eval(left, array))
             elif str_chromo == Utils.SIN_OP_SYMBOL:
                 return math.sin(self.eval(left, xarray))
             elif str_chromo == Utils.COS_OP_SYMBOL:
@@ -95,11 +97,10 @@ class Individual:
         # The current node is a variable
         elif utils.is_variable(str_chromo):
             index = int(str_chromo[1:])
-            #print('--------> VARIABLE: X' + str(index) + '       VALUE: ' + str(xarray[index]))
             return xarray[index] if index < len(xarray) - 1 else 0
         # The current node is a constant
         else:
-            return float(str_chromo) # TODO: CHECK THIS LATER!
+            return float(str_chromo)
 
     def mutate(self):
         """
@@ -111,9 +112,15 @@ class Individual:
         """
         utils = Utils()
         copy_chromo = copy.deepcopy(self)
+        #copy_chromo = self
         tree_size   = self.__genotype.get_chromossome_size()
+        tree_depth  = math.floor(math.log(tree_size, 2))
+
         mut_index   = utils.get_randint(0, tree_size - 1)
         mut_chromo  = copy_chromo.get_genotype().search(mut_index)
+        mut_chromo_size  = copy_chromo.get_genotype().get_chromossome_size()
+        mut_chromo_depth = math.floor(math.log(mut_chromo_size, 2))
+        mut_max_depth   = self.__max_depth - (tree_size - mut_chromo_depth)
 
         # Get a random new operator or terminal for the chromo being mutated
         new_chromo_symbol = utils.get_random_node()
@@ -126,14 +133,12 @@ class Individual:
         # The chosen node is a function
         else:
             mut_chromo.set_symbol(new_chromo_symbol)
-            mut_max_depth = utils.get_randint(2, self.__max_depth / 2)
-            left  = Chromossome.gen_random_chromossome(mut_max_depth, 'full')
+            new_subtree_depth = utils.get_randint(2, mut_max_depth - 1)
+            left  = Chromossome.gen_random_chromossome(new_subtree_depth, 'full')
             right = None if utils.is_operator_unary(new_chromo_symbol) \
-                    else Chromossome.gen_random_chromossome(mut_max_depth, 'full')
+                    else Chromossome.gen_random_chromossome(new_subtree_depth, 'full')
         mut_chromo.set_left_child(left)
         mut_chromo.set_right_child(right)
-
-        #mut_chromo.resize_tree(self.__max_depth)
 
         return copy_chromo
 

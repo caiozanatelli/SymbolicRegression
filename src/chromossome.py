@@ -77,7 +77,7 @@ class Chromossome:
             return
 
         if self.__left_child == chromo:
-            chromo.__left = new_subtree
+            chromo.__left_child = new_subtree
             return
         else:
             if self.__left_child is not None:
@@ -111,6 +111,7 @@ class Chromossome:
             if self.__right_child is not None:
                 self.__right_child.resize_tree(depth - 1)
         else:
+            print('[+] Prunning tree.')
             if Utils().is_terminal(self.__symbol):
                 self.__left_child  = None
                 self.__right_child = None
@@ -119,10 +120,6 @@ class Chromossome:
         
     @classmethod
     def gen_random_chromossome(cls, depth, method):
-
-        #print('----> Recursion')
-        #print('Max Depth: ' + str(depth))
-
         utils = Utils()
         arg1 = None
         arg2 = None
@@ -132,14 +129,11 @@ class Chromossome:
 
         if depth == 0 or (method == 'grow' and choosing_terminal):
             expr = utils.get_terminal()
-            #print('[+] Terminal: ' + str(expr))
         else:        
             expr = utils.get_function()
             arg1 = cls.gen_random_chromossome(depth - 1, method)
             if utils.is_operator_binary(expr):
                 arg2 = cls.gen_random_chromossome(depth - 1, method)
-
-        #print('[+] Expression: ' + str(arg1) + ' ' + str(expr) + ' ' + str(arg2))
 
         return Chromossome(expr, arg1, arg2)
 

@@ -117,27 +117,4 @@ class Population:
                 worst_fitness = indiv_fitness
         avg_fitness /= pop_size
 
-        #self.__stats.set_best_individual(copy.deepcopy(best_individual))
-        #self.__stats.set_worst_individual(copy.deepcopy(worst_individual))
-        #self.__stats.set_avg_fitness(avg_fitness)
-
-        #return self.__stats
-
         return (copy.deepcopy(best_individual), copy.deepcopy(worst_individual), avg_fitness)
-
-        #processes = [Process(target=self.__individuals[i].calculate_fitness, args=(xarray, avg_dataset_output,)) 
-        #            for i in range(len(self.__individuals))]
-
-        # Run all the processes
-        #for p in processes:
-        #    p.start()
-        # Wait all the processes to finish
-        #for p in processes:
-        #    p.join()
-
-        #sum_fitness = sum(indiv.get_fitness() for indiv in self.__individuals) / len(self.__individuals)
-        #for i in self.__individuals:
-        #    print(i.get_fitness())
-
-        #return (self.__avg_fitness, self.__best_individual, self.__worst_individual)
-        
