@@ -59,10 +59,6 @@ The code was entirely designed so that future extensions could be possible, henc
 
 * <b> syregression.py </b>: is the main program. This is the module that is executed by the user, which is responsible for parsing the parameters and performing modules calls in order to start the training and testing phases through the utilization of a <i>Genetic Programming</i> instance.
 
-## Results
-
-For information on the results please check the ![documentation](doc/doc.pdf) in which we present graphics and the set of experiments run in order to validate the algorithm.
-
 ## Execution & Parameters
 
 In the project root directory, use the following command for running the software:
@@ -94,6 +90,10 @@ The parameters listed above are:
 
 ## Input & Output
 
-The input files are given in CSV (Comma-Separated Values) format and their contents are all floating-point values. Hence, let <i> n </i> be the number of entries in a row of the input file. The first <i> n - 1 </i> values correspond to the input variables of a function, that is <i> x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n - 1</sub> </i>, while the last entry refers to the <i> y </i> output of the function when variables <i> x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n - 1</sub> </i> are applied to it, that is <i> f(<i> x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n - 1</sub></i>)</i>.
+The input files are given in CSV (Comma-Separated Values) format and their contents are all floating-point values. Hence, let <i> n </i> be the number of entries in a row of the input file. The first <i> n - 1 </i> values correspond to the input variables of a function, that is <i> x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n - 1</sub> </i>, while the last entry refers to the <i> y </i> output of the function when variables <i> x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n - 1</sub> </i> are applied to it.
 
 The output consists of two files: <i>out.txt</i> and <i>out.txt.csv</i>, where <i>out</i> is the output filed defined by <i> --out </i> parameter. The first one stores a log in human-readable format with pertinent information regarding all Genetic Programming generations. The second one produces a CSV file with the same information, which is the input to the scripts used to perform the experimental analysis. We show below an output example.
+
+## Results
+
+For information on the results please check the ![documentation](doc/doc.pdf) in which we present graphics and the set of experiments run in order to validate the algorithm.
