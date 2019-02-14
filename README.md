@@ -1,4 +1,4 @@
-# Symbolic Regression through Genetic Programming
+# Symbolic Regression employing Genetic Programming
 
 ## Description
 This work concerns the implementation of a Genetic Programming (GP) algorithm for solving the Symbolic Regression problem, which consists in, given a set of inputs, fit a mathematical model that best represents the original function, both in terms of accuracy and simplicity. This approach builds a model by combining building blocks in order to achieve a final solution, measuring its accuracy.
@@ -38,6 +38,26 @@ This project was developed using Python 2 and the only exception stands for the 
 * The maximum depth of the tree is set to 7 as default and this value has not been evaluated in the experimental analysis.
 
 * We implemented a penalty measure for individuals that exceed the maximum depth of the tree, a situation derived from crossover and mutation. The penalty is applied to the fitness, boosting it to the maximum integer value that can be represented in Python.
+
+## Project Structure
+
+The code was entirely designed so that future extensions could be possible, hence providing a generic Genetic Programming algorithm for different problems, which would only require individual and fitness calculus changes. The structure adopted is shown below.
+
+* <b> chromossome.py </b>: defines a <i>Chromossome</i> class that represents the tree (i.e the genotype) of an individual. It also provides methods inherent to binary trees such as tree traversal, search and replacement of a node, random subtrees generation, etc.
+
+* <b> individual.py </b>: defines an <i>Individual</i> class that represents an individual of a population, which is composed by its genotype (<i>Chromossome</i>) and the associated fitness. It also provides methods for the calculation of the fitness of a given problem instance and for applying apply mutation to its genotype.
+
+* <b> population.py </b>: defines a <i>Population</i> class that represents a population of individuals. It provides methods for addition and search among the set of individuals and also methods to generate the initial population, which has also been modularized in order to allow the inclusion of different approaches of population generation, even though <i>Ramped Half-and-Half</i> is the standard choice in this project. Furthermore, this class also provides methods to calculate the fitness of the entire population, which uses those methods defined in the <i>Individual</i> class.
+
+* <b> statistics.py </b>: defines a <i>Statistics</i> class that provides a simple and easy way to store and calculate statistics of each algorithm generation.
+
+* <b> utils.py </b>: defines an <i>Utils</i> class that provides a variety of common functions used in all other modules, such as checking whether a terminal is a constant, random probability generation, random integer value generation, random real value generation, etc.
+
+* <b> ioutils.py </b>: defines an <i>IOUtils</i> class that provides a simple interface to file manipulation.
+
+* <b> genprog.py </b>: defines a <i>Genetic Programming</i> class that represents the Genetic Programming itself. It coordinates the algorithm flow: generation of an initial population and the evolution of generations through selection and application of genetic operators. Besides methods regarding the training phase, this module also provides a method to perform the testing phase, which evaluates an instance of the problem using the mathematical model built in the learning process.
+
+* <b> syregression.py </b>: is the main program. This is the module that is executed by the user, which is responsible for parsing the parameters and performing modules calls in order to start the training and testing phases through the utilization of a <i>Genetic Programming</i> instance.
 
 ## Results
 
